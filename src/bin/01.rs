@@ -40,8 +40,6 @@ fn part_two(input: &Vec<u32>) -> u32 {
 advent_of_rust::main! {
     let cleaned_input = parse_input(INPUT);
     let part_one = part_one(&cleaned_input);
-    println!("{}", part_one);
     let part_two = part_two(&cleaned_input);
-    println!("{}", part_two);
     (part_one, part_two)    
 }
