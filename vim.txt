@@ -1,0 +1,12 @@
+
+moving around page
+ctrl + f
+ctrl + b
+ctrl + d
+ctrl + u
+
+enter visual mode
+ctrl + v
+
+new escape remapping
+jj
