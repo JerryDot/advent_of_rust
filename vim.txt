@@ -22,3 +22,10 @@ reverse slash search
 
 to find installation path of exe on linux
 which ____
+
+vec is a struct
+structs are like types that have a collection of things of length unknown at compile time
+traits are constraints (requirements for an object to satisfy an interface)
+cannot iterate over a vec but can call iter() on it with zero cost abstraction
+
+look up optional types (eg Some())
