@@ -19,3 +19,6 @@ yib vab p
 
 reverse slash search
 ?
+
+to find installation path of exe on linux
+which ____
