@@ -10,3 +10,12 @@ ctrl + v
 
 new escape remapping
 jj
+
+delete everything inside bracket
+di(
+
+delete surrounding parentheses
+yib vab p
+
+reverse slash search
+?
