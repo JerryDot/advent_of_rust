@@ -4,25 +4,21 @@ static INPUT: &str = "5672987533353956199629683941564528646262567117433461547747
 
 fn work_through(input_string: &str) -> u16 {
     let first_char: char = input_string.chars().next().unwrap();
+    let mut s = String::from(input_string);
+    s.push(first_char as char);
     let mut sum: u32 = 0;
-    let mut last_char: char = 0 as char;
-    for character in input_string.chars() {
+    let mut last_char= 0 as char;
+    for character in s.chars() {
         if character == last_char {
             sum = sum + character as u32 - '0' as u32;
         }
         last_char = character;
-    }
-    if last_char == first_char {
-        sum = sum + first_char as u32 - '0' as u32;
     }
     sum as u16
 }
 
 fn work_part_two(input_string: &str) -> u32 {
     let length: usize = input_string.chars().count();
-    println!("{} characters", length);
-    println!("{} characters", length/ 2);
-    println!("{} characters", length/ 2 + 1);
     let original_string: String = String::from(input_string);
     let first_half: &str = &original_string[0..length/2];
     let second_half: &str = &original_string[((length/2))..length];
