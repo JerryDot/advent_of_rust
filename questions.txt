@@ -1,0 +1,4 @@
+What are macros in rust?
+What does collect do? Turn an iterator into a suitable thing?
+Is it worth avoiding composing multiple map statements?
+What is Global? (referenced in tooltips a lot)

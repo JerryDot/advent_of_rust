@@ -26,21 +26,19 @@ fn part_two(input_array: &[Vec<u32>]) -> f64 {
     let x = input_array
         .iter()
         .map(|l| l
-                            .iter()
-                            .combinations(2)
-                            .filter(|a| a[0] % a[1] == 0 || a[1] % a[0] == 0)
-                            .sorted()
-                            .collect::<Vec<Vec<&u32>>>())
-        .collect::<Vec<Vec<Vec<&u32>>>>();
-    println!("{:?}", x);
-    let y = x
+            .iter()
+            .combinations(2)
+            .filter(|a| a[0] % a[1] == 0 || a[1] % a[0] == 0)
+            .sorted()
+            .collect::<Vec<Vec<&u32>>>())
+        .collect::<Vec<Vec<Vec<&u32>>>>()
         .iter()
         .map(|t| {
             let z = &t[0];
             *z[0].max(z[1]) as f64 / *z[0].min(z[1]) as f64
         })
         .sum();
-    y
+    x
 }
 
 advent_of_rust::main! {
