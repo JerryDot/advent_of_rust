@@ -12,7 +12,7 @@ fn parse_input(input_string: &str) -> Vec<u32> {
 
 fn part_one(input: &[u32]) -> u32 {
     let mut last_digit = 0;
-    let mut sum = (input.last().unwrap() == &input[0]) as u32 * &input[0];
+    let mut sum = (input.last().unwrap() == &input[0]) as u32 * input[0];
     for number in input {
         if last_digit == *number {
             sum += number;
