@@ -1,7 +1,7 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
-use std::process::Command;
 use std::fs;
+use std::process::Command;
 
 static MS_REGEX: Lazy<Regex> = Lazy::new(|| Regex::new(r"Time: (\d+)ms").unwrap());
 
