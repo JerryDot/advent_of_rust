@@ -1,0 +1,3 @@
+
+to find installation path of exe on linux
+which ____
