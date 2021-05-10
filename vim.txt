@@ -20,4 +20,5 @@ yib vab p
 reverse slash search
 ?
 
-)
+Make visual mode selection and then use colon
+Then you can add s/<match>/<replacement>/g to find and replace all matches in the visual selection
