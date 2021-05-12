@@ -36,10 +36,10 @@ fn part_one(passphrase_list: Vec<Vec<&str>>) -> i32 {
 fn part_two(passphrase_list: Vec<Vec<&str>>) -> i32 {
     let mut total = 0;
     for phrase in passphrase_list {
-        let mut dictionary = HashSet::<&str>::new();
+        let mut dictionary = HashSet::<Vec<char>>::new();
         let mut found = false;
         for word in phrase {
-            if dictionary.contains(&word.chars().sorted().collect::<String::from>()) {
+            if dictionary.contains(&word.chars().sorted().collect::<Vec<char>>()) {
                 found = true;
                 break
             }
@@ -55,23 +55,23 @@ fn part_two(passphrase_list: Vec<Vec<&str>>) -> i32 {
 advent_of_rust::main! {
     let cleaned_input = parse_input(INPUT);
     let part_one = part_one(cleaned_input);
-    println!("{}", part_one);
-    // let part_two = part_two(cleaned_input);
-    (part_one, 4)
+    let recleaned_input = parse_input(INPUT);
+    let part_two = part_two(recleaned_input);
+    (part_one, part_two)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    // #[test]
-    // fn part_one_answer() {
-    //     assert_eq!(part_one(&parse_input(INPUT)), 36174)
-    // }
+    #[test]
+    fn part_one_answer() {
+        assert_eq!(part_one(parse_input(INPUT)), 325)
+    }
 
-    // #[test]
-    // fn part_two_answer() {
-    //     assert_eq!(part_two(&parse_input(INPUT)) as u16, 244)
-    // }
+    #[test]
+    fn part_two_answer() {
+        assert_eq!(part_two(parse_input(INPUT)) as u16, 119)
+    }
 }
 
