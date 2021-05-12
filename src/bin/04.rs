@@ -1,4 +1,6 @@
 use std::collections::HashSet;
+
+use itertools::Itertools;
 static INPUT: &str = include_str!("../input/input4.txt");
 
 fn parse_input(input_string: &str) -> Vec<Vec<&str>> {
@@ -23,6 +25,25 @@ fn part_one(passphrase_list: Vec<Vec<&str>>) -> i32 {
                 break
             }
             dictionary.insert(word);
+        }
+        if !found {
+            total += 1;
+        }
+    }
+    total
+}
+
+fn part_two(passphrase_list: Vec<Vec<&str>>) -> i32 {
+    let mut total = 0;
+    for phrase in passphrase_list {
+        let mut dictionary = HashSet::<&str>::new();
+        let mut found = false;
+        for word in phrase {
+            if dictionary.contains(&word.chars().sorted().collect::<String::from>()) {
+                found = true;
+                break
+            }
+            dictionary.insert(word.chars().sorted().collect());
         }
         if !found {
             total += 1;
