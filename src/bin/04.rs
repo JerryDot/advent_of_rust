@@ -14,17 +14,16 @@ fn parse_input(input_string: &str) -> Vec<Vec<&str>> {
         .collect::<Vec<Vec<&str>>>()
 }
 
-fn part_one(passphrase_list: Vec<Vec<&str>>) -> i32 {
+fn part_one(passphrase_list: &[Vec<&str>]) -> i32 {
     let mut total = 0;
     for phrase in passphrase_list {
         let mut dictionary = HashSet::<&str>::new();
         let mut found = false;
         for word in phrase {
-            if dictionary.contains(word) {
+            if !dictionary.insert(word) {
                 found = true;
                 break
             }
-            dictionary.insert(word);
         }
         if !found {
             total += 1;
@@ -54,9 +53,8 @@ fn part_two(passphrase_list: Vec<Vec<&str>>) -> i32 {
 
 advent_of_rust::main! {
     let cleaned_input = parse_input(INPUT);
-    let part_one = part_one(cleaned_input);
-    let recleaned_input = parse_input(INPUT);
-    let part_two = part_two(recleaned_input);
+    let part_one = part_one(&cleaned_input);
+    let part_two = part_two(cleaned_input);
     (part_one, part_two)
 }
 
@@ -66,12 +64,12 @@ mod tests {
 
     #[test]
     fn part_one_answer() {
-        assert_eq!(part_one(parse_input(INPUT)), 325)
+        assert_eq!(part_one(&parse_input(INPUT)), 325)
     }
 
     #[test]
     fn part_two_answer() {
-        assert_eq!(part_two(parse_input(INPUT)) as u16, 119)
+        assert_eq!(part_two(parse_input(INPUT)), 119)
     }
 }
 
