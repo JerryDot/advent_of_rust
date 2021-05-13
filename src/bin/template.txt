@@ -1,0 +1,38 @@
+// static INPUT: &str = include_str!("../input/input<DAY>.txt");
+
+// fn parse_input(input_string: &str) ->  {
+//     input_string
+//         .trim()
+//         .
+//         .collect::<Vec<Vec<&str>>>()
+// }
+
+// fn part_one() ->  {
+
+// }
+
+// fn part_two() ->  {
+
+// }
+
+// advent_of_rust::main! {
+//     let cleaned_input = parse_input(INPUT);
+//     let part_one = part_one(&cleaned_input);
+//     let part_two = part_two(cleaned_input);
+//     (part_one, part_two)
+// }
+
+// #[cfg(test)]
+// mod tests {
+//     use super::*;
+
+//     #[test]
+//     fn part_one_answer() {
+//         assert_eq!(part_one(&parse_input(INPUT)), <ANSWER_ONE>)
+//     }
+
+//     #[test]
+//     fn part_two_answer() {
+//         assert_eq!(part_two(parse_input(INPUT)), <ANSWER_TWO>)
+//     }
+// }
