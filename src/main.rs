@@ -3,6 +3,7 @@ use regex::Regex;
 use std::fs;
 use std::process::Command;
 
+
 static MS_REGEX: Lazy<Regex> = Lazy::new(|| Regex::new(r"Time: (\d+)ms").unwrap());
 
 fn extract_time(s: &str) -> u32 {
