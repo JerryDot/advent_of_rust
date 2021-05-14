@@ -10,26 +10,40 @@ fn parse_input(input_string: &str) -> Vec<i32> {
         .collect::<Vec<i32>>()
 }
 
-fn part_one(instructions: Vec<i32>) -> u16 {
-    let pointer: i32 = 0;
-    let counter = 0;
-    let instructions_length = instructions.len() as i16;
-    while pointer >= 0 && pointer < instructions_length {
+fn part_one(mut instructions: Vec<i32>) -> u32 {
+    let mut pointer: usize = 0;
+    let mut counter = 0;
+    let instructions_length = instructions.len() as u32;
+    while pointer < instructions_length as usize {
         instructions[pointer] += 1;
-        pointer += instructions[pointer] - 1;
-        counter += 1
+        pointer = pointer + instructions[pointer] as usize - 1;
+        counter += 1;
     }
     counter
 }
 
-fn part_two() -> i32 {
-    4
+fn part_two(mut instructions: Vec<i32>) -> u32 {
+    let mut pointer: usize = 0;
+    let mut counter = 0;
+    let instructions_length = instructions.len() as u32;
+    while pointer < instructions_length as usize {
+        if instructions[pointer] > 2 {
+            instructions[pointer] -= 1;
+            pointer = pointer + instructions[pointer] as usize + 1;
+        } else {
+            instructions[pointer] += 1;
+            pointer = pointer + instructions[pointer] as usize - 1;
+        }
+        counter += 1;
+    }
+    counter
 }
 
 advent_of_rust::main! {
     let cleaned_input = parse_input(INPUT);
     let part_one = part_one(cleaned_input);
-    let part_two = part_two(cleaned_input);
+    let recleaned_input = parse_input(INPUT);    
+    let part_two = part_two(recleaned_input);
     (part_one, part_two)
 }
 
@@ -39,11 +53,11 @@ mod tests {
 
     #[test]
     fn part_one_answer() {
-        assert_eq!(part_one(&parse_input(INPUT)), <ANSWER_ONE>)
+        assert_eq!(part_one(parse_input(INPUT)), 372139)
     }
 
     #[test]
     fn part_two_answer() {
-        assert_eq!(part_two(parse_input(INPUT)), <ANSWER_TWO>)
+        assert_eq!(part_two(parse_input(INPUT)), 29629538)
     }
 }
