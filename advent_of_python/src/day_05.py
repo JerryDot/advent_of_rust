@@ -3,7 +3,7 @@ import os
 
 def parse_input():
     script_dir = os.path.dirname(__file__)
-    rel_path = "../input/input5.txt"
+    rel_path = "../../input/input5.txt"
     with open(os.path.join(script_dir, rel_path), 'r') as input_file:
         input_string = list(map(lambda k: int(k), input_file.readlines()))
         other_input = deepcopy(input_string)

@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 use itertools::Itertools;
-static INPUT: &str = include_str!("../input/input4.txt");
+static INPUT: &str = include_str!("../../../input/input4.txt");
 
 fn parse_input(input_string: &str) -> Vec<Vec<&str>> {
     input_string

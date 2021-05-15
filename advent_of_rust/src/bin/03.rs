@@ -1,10 +1,14 @@
-use std::{collections::{HashMap, hash_map::RandomState}, thread::current};
-static INPUT: &str = include_str!("../input/input3.txt");
+use std::{
+    collections::{hash_map::RandomState, HashMap},
+    thread::current,
+};
+static INPUT: &str = include_str!("../../../input/input3.txt");
 
 fn parse_input(input_string: &str) -> u32 {
     input_string
+        .trim()
         .parse::<u32>()
-        .unwrap_or_else(|a| panic!("Err {} wasnt a valid u32", a))
+        .unwrap_or_else(|a| panic!("Err '{}' wasn't a valid u32: {}", input_string, a))
 }
 
 fn part_one(square: u32) -> u32 {
@@ -13,23 +17,23 @@ fn part_one(square: u32) -> u32 {
     371
 }
 
-const EAST: [i8;2] = [1, 0];
-const NORTH: [i8;2] = [0, 1];
-const WEST: [i8;2] = [-1, 0];
-const SOUTH: [i8;2] = [0, -1];
+const EAST: [i8; 2] = [1, 0];
+const NORTH: [i8; 2] = [0, 1];
+const WEST: [i8; 2] = [-1, 0];
+const SOUTH: [i8; 2] = [0, -1];
 
 enum direction {
     EAST,
     NORTH,
     WEST,
-    SOUTH
+    SOUTH,
 }
 
 // fn change_direction(direction: [])
 // pub struct HashMap<(i8, i8), u16, S = RandomState>
 type Coord = [i8; 2];
 
-fn new_coord_from<F: Iterator<Item=i8>>(src: F) -> Coord {
+fn new_coord_from<F: Iterator<Item = i8>>(src: F) -> Coord {
     let mut result: [i8; 2] = [0; 2];
     for (rref, val) in result.iter_mut().zip(src) {
         *rref = val;
@@ -39,9 +43,11 @@ fn new_coord_from<F: Iterator<Item=i8>>(src: F) -> Coord {
 
 fn add(a: Coord, b: Coord) -> Coord {
     new_coord_from(a.iter().zip(&b).map(|(a, b)| a + b))
-} 
+}
 
 fn part_two(limit: u32) -> u16 {
+    panic!("Not implemented");
+/*
     let mut current_size = 1;
     let mut position: [i8; 2] = [0, 0];
     let mut change: [i8; 2] = EAST;
@@ -53,7 +59,16 @@ fn part_two(limit: u32) -> u16 {
     let most_NORTH = 0;
     let most_WEST = 0;
     let most_SOUTH = 0;
-    const adjacent_moves: [[i8; 2]; 8] = [[0, 1], [1, 0], [1, 1], [-1, 0], [0, -1], [-1, -1], [-1, 1], [1, -1]];
+    const adjacent_moves: [[i8; 2]; 8] = [
+        [0, 1],
+        [1, 0],
+        [1, 1],
+        [-1, 0],
+        [0, -1],
+        [-1, -1],
+        [-1, 1],
+        [1, -1],
+    ];
 
     while current_size < limit {
         position = add(position, change);
@@ -66,14 +81,18 @@ fn part_two(limit: u32) -> u16 {
         } else if position[1] < most_SOUTH {
             change = EAST
         };
-        current_size = adjacent_moves.iter().map(|a| {
-            if size_store.contains_key(add(new_coord_from(&position), *a)) {
-                size_store[add(&position, *a)]
-            } else {
-                0
-            }
-        }).sum()
+        current_size = adjacent_moves
+            .iter()
+            .map(|a| {
+                if size_store.contains_key(add(new_coord_from(&position), *a)) {
+                    size_store[add(&position, *a)]
+                } else {
+                    0
+                }
+            })
+            .sum()
     }
+*/
     10
 }
 

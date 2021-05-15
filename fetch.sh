@@ -13,5 +13,5 @@ fi
 for x in {1..25}
 do
     URL="https://adventofcode.com/2017/day/$x/input"
-    curl $URL --cookie "session=$1" -s > /src/input/input$x.txt
+    curl $URL --cookie "session=$1" -s > ./input/input$x.txt
 done
