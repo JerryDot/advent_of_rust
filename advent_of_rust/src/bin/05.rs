@@ -1,8 +1,4 @@
-// #![feature(test)]
-
-// extern crate test;
-
-static INPUT: &str = include_str!("../input/input5.txt");
+static INPUT: &str = include_str!("../../../input/input5.txt");
 
 fn parse_input(input_string: &str) -> Vec<i32> {
     input_string
@@ -26,7 +22,7 @@ fn part_one(mut instructions: Vec<i32>) -> u32 {
     counter
 }
 
-pub fn part_two(mut instructions: Vec<i32>) -> u32 {
+fn part_two(mut instructions: Vec<i32>) -> u32 {
     let mut pointer: usize = 0;
     let mut counter = 0;
     let instructions_length = instructions.len() as u32;
@@ -54,19 +50,11 @@ advent_of_rust::main! {
 #[cfg(test)]
 mod tests {
     use super::*;
-    // use test::Bencher;
 
     #[test]
     fn part_one_answer() {
         assert_eq!(part_one(parse_input(INPUT)), 372139)
     }
-
-    // #[bench]
-    // fn bench_add_two(b: &mut Bencher) {
-    //     let p1_input = parse_input(INPUT);
-    //     b.iter(|| part_one(p1_input))
-    // }
-
 
     #[test]
     fn part_two_answer() {

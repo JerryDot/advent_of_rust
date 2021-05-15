@@ -1,5 +1,7 @@
-/target
+/advent_of_rust/target
 *.out
 Cargo.lock
 *.pyc
 .vscode
+.idea/
+venv/
