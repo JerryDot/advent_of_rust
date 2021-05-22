@@ -1,6 +1,6 @@
 use itertools::multizip;
 
-static INPUT: &str = include_str!("../../../input/input1.txt");
+static INPUT: &str = include_str!("../input/input1.txt");
 
 fn parse_input(input_string: &str) -> Vec<u32> {
     input_string

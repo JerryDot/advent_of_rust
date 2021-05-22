@@ -1,7 +1,4 @@
-use std::{
-    collections::{hash_map::RandomState, HashMap},
-    thread::current,
-};
+
 static INPUT: &str = include_str!("../../../input/input3.txt");
 
 fn parse_input(input_string: &str) -> u32 {
