@@ -2,7 +2,7 @@
 
 // extern crate test;
 
-pub static INPUT: &str = include_str!("../src/input/input5.txt");
+pub static INPUT: &str = include_str!("../../input/input5.txt");
 
 pub fn parse_input(input_string: &str) -> Vec<i32> {
     input_string

@@ -1,6 +1,5 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
-use std::fs;
 use std::process::Command;
 
 
@@ -12,9 +11,9 @@ fn extract_time(s: &str) -> u32 {
 }
 
 fn main() {
-    let number_of_days = fs::read_dir("./bin").iter().count();
-    let total_time = (1..=number_of_days)
+    let total_time = (1..=5)
         .map(|day_num| {
+            println!("hi");
             let day = format!("{:0>2}", day_num);
             let cmd = Command::new("cargo")
                 .args(&["run", "--release", "--bin", &day])

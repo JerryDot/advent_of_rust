@@ -46,7 +46,7 @@ fn add(a: Coord, b: Coord) -> Coord {
 }
 
 fn part_two(limit: u32) -> u16 {
-    panic!("Not implemented");
+    // panic!("Not implemented");
 /*
     let mut current_size = 1;
     let mut position: [i8; 2] = [0, 0];
