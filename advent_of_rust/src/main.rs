@@ -1,5 +1,6 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
+use std::fs;
 use std::process::Command;
 
 
@@ -11,17 +12,30 @@ fn extract_time(s: &str) -> u32 {
 }
 
 fn main() {
-    let total_time = (1..=5)
-        .map(|day_num| {
-            println!("hi");
-            let day = format!("{:0>2}", day_num);
-            let cmd = Command::new("cargo")
-                .args(&["run", "--release", "--bin", &day])
-                .output()
-                .unwrap();
-            let output = String::from_utf8(cmd.stdout).unwrap();
-            println!("Day {}:\n{}", day, output);
-            extract_time(&output)
+    let exn = std::ffi::OsStr::new("rs");
+    let total_time = fs::read_dir("./src/bin")
+        .unwrap()
+        .into_iter()
+        .filter_map(|entry| {
+            let entry = match entry {
+                Ok(e) => e,
+                Err(_) => {
+                    return None;
+                }
+            };
+            let path = entry.path();
+            if path.extension() == Some(exn) {
+                let file_without_extension = path.file_stem()?.to_str()?;
+                let cmd = Command::new("cargo")
+                    .args(&["run", "--release", "--bin", file_without_extension])
+                    .output()
+                    .unwrap();
+                let output = String::from_utf8(cmd.stdout).unwrap();
+                println!("{}:\n{}", file_without_extension, output);
+                Some(extract_time(&output))
+            } else {
+                None
+            }
         })
         .sum::<u32>();
     println!("Total time: {}ms", total_time);
