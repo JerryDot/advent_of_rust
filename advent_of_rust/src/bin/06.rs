@@ -14,14 +14,18 @@ fn parse_input(input_string: &str) -> Vec<u16> {
 
 fn one_step_replace(banks: Vec<u16>) -> Vec<u16> {
     let length = banks.len() as u16;
-    let biggest = *banks.iter().max().unwrap();
-    let indexx = banks.iter().position(|&r| r == biggest).unwrap() as u16;
-    banks.iter().enumerate().map(|(_i, w)| {
+
+    let (indexx, biggest) = banks
+        .iter()
+        .enumerate()
+        .fold((0, 0), |max, (ind, &val)| if val > max.1 {(ind, val)} else {max});
+
+    banks.iter().enumerate().map(|(i, w)| {
         let mut adder = 0;
-        if ((_i as u16 - indexx) % length + length - 1) % length < biggest % length {
+        if ((i as u16 - indexx as u16) % length + length - 1) % length < biggest % length {
             adder = 1;
         };
-        if _i as u16 == indexx {
+        if i as u16 == indexx as u16 {
             (biggest / length) + adder
         } else {
             w + (biggest / length) + adder
